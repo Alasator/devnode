@@ -6,8 +6,7 @@
 
 require('./bootstrap');
 
-const WebSocket = require('ws');
-
+/*const WebSocket = require('ws');*/
 
 window.Vue = require('vue');
 
@@ -24,6 +23,8 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.component('chat', require('./components/Chat.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -33,6 +34,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+/*
 
 const wss = new WebSocket.Server({
     port: 8080
@@ -52,4 +54,4 @@ wss.on("connection", ws => {
         //  отправляем сообщение всем, кроме автора
         wss.broadcast(message, client => client !== ws);
     });
-});
+});*/

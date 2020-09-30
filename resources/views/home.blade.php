@@ -17,7 +17,6 @@
                     You are logged in!
                 </div>
             </div>
-            <div><example-component></example-component></div>
         </div>
     </div>
 </div>

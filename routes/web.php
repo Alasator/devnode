@@ -12,13 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('chat');
 });
 
-Route::get('/', 'HomeController@index');
+Route::post('messages', function (Illuminate\Http\Request $request){
+    App\Events\Message::dispatch($request->input('body'));
+});
+
+//Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::view('/hello', 'welcome');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
