@@ -55,10 +55,41 @@ services:
     networks:
       - app-network
 
+  redis:
+    image: redis:alpine
+
+  php-worker:
+    build: ./php-worker
+    container_name: php-worker
+    volumes:
+      - ..:/var/www
+    links:
+      - redis
+      - db
+
+  php-cron:
+    build: ./php-cron
+    container_name: php-cron
+    volumes:
+      - ..:/var/www
+    links:
+      - redis
+      - db
+
+  php-horizon:
+    build: ./php-horizon
+    container_name: php-horizon
+    volumes:
+      - ..:/var/www
+    links:
+      - redis
+      - db
+
 #Docker Networks
 networks:
   app-network:
     driver: bridge
+
 #Volumes
 volumes:
   dbdata:
