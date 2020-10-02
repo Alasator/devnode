@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 Use App\Article;
+use \App\Services\JsonRpcServer;
+use \App\Http\Controllers\DataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +31,8 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout');
 /*});*/
+
+//route for json-rpc query
+Route::post('/data', function (Request $request, JsonRpcServer $server, DataController $controller) {
+    return $server->handle($request, $controller);
+});
